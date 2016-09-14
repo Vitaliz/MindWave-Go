@@ -177,8 +177,9 @@ func ( mw *MindWave ) Connect() error {
                     if( err != nil ) {
                         fmt.Println( "MindWave: ", err )
                     }
+                    fmt.Println( mw.attentionESense )
                     // requerido para el scheduler
-                    time.Sleep( time.Millisecond * 1 )
+                    //time.Sleep( time.Millisecond * 1 )
             }
         }
     }( mw )
@@ -358,7 +359,7 @@ func ( mw *MindWave ) parsePayload() error {
                 case 0x83:  // asic eeg power struct (8, 3 bytes unsigned int big indian)
                     mw.delta = uint32( data[0] )<<16 + uint32( data[1] )<<8 + uint32( data[2] )
                     mw.theta = uint32( data[3] )<<16 + uint32( data[4] )<<8 + uint32( data[5] )
-                    mw.lowAlpha = uint32( data[6] )<<16 + uint32( data[7] )<<8 + uint32( data[7] )
+                    mw.lowAlpha = uint32( data[6] )<<16 + uint32( data[7] )<<8 + uint32( data[8] )
                     mw.highAlpha = uint32( data[9] )<<16 + uint32( data[10] )<<8 + uint32( data[11] )
                     mw.lowBeta = uint32( data[12] )<<16 + uint32( data[13] )<<8 + uint32( data[14] )
                     mw.highBeta = uint32( data[15] )<<16 + uint32( data[16] )<<8 + uint32( data[17] )
